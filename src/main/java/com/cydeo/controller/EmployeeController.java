@@ -5,6 +5,7 @@ import com.cydeo.model.Employee;
 import com.cydeo.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,11 +29,17 @@ private final EmployeeService employeeService;
        return "employee/employee-create";
     }
     @PostMapping("/insert")
-    public String insertEmployee(@ModelAttribute("employee") Employee employee, Model model ){
+    public String insertEmployee(@ModelAttribute("employee") Employee employee, BindingResult bindingResult, Model model ){
         //@ModelAttribute is going to capture the objects that is sent from the UI
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("stateList", DataGenerator.getAllStates());
+            return "employee/employee-create";
+        }
+
         employeeService.saveEmployee(employee);
         model.addAttribute("employeeList", employeeService.readAllEmployees());
-        return "redirect:employee/list";
+        return "redirect:/employee/list";
         //redirect use with endpoint not html file
         //with redirect we are using endpoints
     }
