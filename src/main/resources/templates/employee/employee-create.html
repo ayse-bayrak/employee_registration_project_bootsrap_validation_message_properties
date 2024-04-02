@@ -33,7 +33,9 @@
         Welcome to Employee Registration Page
       </h2>
       <div class="card-body">
-        <form th:object="${employee}">
+        <form th:object="${employee}" th:action="@{/employee/insert}" method="post">
+<!--          to be able to send some data from UI or view we need to put method to form-->
+<!--          it means this form going to point to post something to the backend-->
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputFirstName4">First Name</label>
