@@ -42,7 +42,7 @@
               <input type="text" class="form-control" id="inputFirstName4" placeholder="First Name" th:field="*{firstName}">
             <div class="text-danger" th:if="${#fields.hasErrors('firstName')}">
                 <ol>
-                    <li th:each="error : ${#fields.errors()}" th:text="${error}">
+                    <li th:each="error : ${#fields.errors('firstName')}" th:text="${error}">
                     </li>
                 </ol>
 
@@ -52,20 +52,47 @@
             <div class="form-group col-md-4">
               <label for="inputLastName4">Last Name</label>
               <input type="text" class="form-control" id="inputLastName4" placeholder="Last Name" th:field="*{lastName}">
+                <div class="text-danger" th:if="${#fields.hasErrors('lastName')}">
+                    <ol>
+                        <li th:each="error : ${#fields.errors('lastName')}" th:text="${error}">
+                        </li>
+                    </ol>
+                </div>
+
             </div>
             <div class="form-group col-md-4">
               <label for="inputBirthDay4">Birthday</label>
               <input type="date" class="form-control" id="inputBirthDay4" th:field="*{birthday}">
+                <div class="text-danger" th:if="${#fields.hasErrors('birthday')}">
+                    <ol>
+                        <li th:each="error : ${#fields.errors('birthday')}" th:text="${error}">
+                        </li>
+                    </ol>
+
+                </div>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Email</label>
               <input type="email" class="form-control" id="inputEmail4" placeholder="Email" th:field="*{email}">
+                <div class="text-danger" th:if="${#fields.hasErrors('email')}">
+                    <ol>
+                        <li th:each="error : ${#fields.errors('email')}" th:text="${error}">
+                        </li>
+                    </ol>
+                </div>
+
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Password</label>
               <input type="password" class="form-control" id="inputPassword4" placeholder="Password" th:field="*{password}">
+                <div class="text-danger" th:if="${#fields.hasErrors('password')}">
+                    <ol>
+                        <li th:each="error : ${#fields.errors('password')}" th:text="${error}">
+                        </li>
+                    </ol>
+                </div>
             </div>
           </div>
           <div class="form-group">
