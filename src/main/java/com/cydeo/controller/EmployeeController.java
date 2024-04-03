@@ -3,6 +3,7 @@ package com.cydeo.controller;
 import com.cydeo.bootsrap.DataGenerator;
 import com.cydeo.model.Employee;
 import com.cydeo.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,8 +30,12 @@ private final EmployeeService employeeService;
        return "employee/employee-create";
     }
     @PostMapping("/insert")
-    public String insertEmployee(@ModelAttribute("employee") Employee employee, BindingResult bindingResult, Model model ){
+    public String insertEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult bindingResult, Model model ){
         //@ModelAttribute is going to capture the objects that is sent from the UI
+//Controller should know about the validation, we need tou put @Valid annotation inside the PostMapping method in front of the Employee object
+        //Because we are checking the Objects the user is sending us, we need to another interface BindingResult.
+        //we need to add this bindingresult as a parameter in our method in wright after Object parameter (Employee)
+        //normally order it does not matter in Java, but here it matter, we have to put after Object to check if it is valid or not
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("stateList", DataGenerator.getAllStates());
