@@ -1,9 +1,6 @@
 package com.cydeo.model;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,9 +12,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Employee {
 
-//    @NotNull // Field should not be null
-//    @NotEmpty // Field should not be null "", ""-> this is empty String field,
-//    @NotBlank // Field should not be "     " blank, "    "-> this is blank, there is no letter, no digit,
+//    @NotNull // Field should not be null, you can use any kinf of object
+//    @NotEmpty // Field should not be null "", ""-> this is empty String field, only use String
+//    @NotBlank // Field should not be "     " blank, "    "-> this is blank, there is no letter, no digit, only use String
 
 //    @NotBlank is covering all of., @NotEmpty is covering @NotNull and itself
 //    @NotNull -> @NotNull
@@ -30,10 +27,16 @@ public class Employee {
     private String lastName;
     //Thymeleaf returns yyyy-MM-dd but LocalDate accepts mm-dd-yyyy
 
+// @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
 
+//    @NotNull
+//    @Email
     private String email;
+
+//    @NotBlank
+//    @Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,}")
     private String password;
     private String address;
     private String address2;
