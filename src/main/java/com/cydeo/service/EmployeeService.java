@@ -18,6 +18,7 @@ public class EmployeeService {
     }
 
     //CRUD operation
-    //Create, read, update, delete...
-    //we did create and read operation
+    //Create or save, read, update, delete...
+    //we did create and read operation (CR of CRUD)
+
 }

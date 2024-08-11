@@ -4,13 +4,13 @@
 <!--copy starter template and paste here which is empty page-->
 <!--and then go to bootstrap page again search-> form-->
 <!--find similar form and copy this one and paste inside the body-->
-<!--go to bootstrap search container and copy paste under the body tag-->
-<!--and form copy paste inside the container (inside div tag) -->
+<!--go to bootstrap search container and copy and paste under the body tag-->
+<!--and form copy and paste inside the container (inside div tag) -->
 <!--in the bootstrap page search justify and copy one with relation center from Justify content-->
 <!--paste after container before form-->
-<!--again bootstrap pace search cards find Header and footer and copy and past outside the form -->
-<!--again bootstrap pace search background color-> bg-info text-white -->
-<!--again bootstrap pace search padding -->
+<!--again bootstrap page search cards find Header and footer and copy and past outside the form -->
+<!--again bootstrap page search background color-> bg-info text-white -->
+<!--again bootstrap page search padding -->
 <!--check button part delete-->
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
@@ -34,8 +34,8 @@
       </h2>
       <div class="card-body">
         <form th:object="${employee}" th:action="@{/employee/insert}" method="post">
-<!--          to be able to send some data from UI or view we need to put method to form-->
-<!--          it means this form going to point to post something to the backend-->
+        <!--to be able to send some data from UI or view, we need to put method to form-->
+        <!--it means this form going to point (/employee/insert) to post something to the backend-->
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputFirstName4">First Name</label>

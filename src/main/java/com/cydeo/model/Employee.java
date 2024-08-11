@@ -12,7 +12,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Employee {
 
-//    @NotNull // Field should not be null, you can use any kinf of object
+//   Validation firstly add Validation dependency to pom.xml file
+//    @NotNull // Field should not be null, you can use any kind of object
 //    @NotEmpty // Field should not be null "", ""-> this is empty String field, only use String
 //    @NotBlank // Field should not be "     " blank, "    "-> this is blank, there is no letter, no digit, only use String
 
@@ -24,11 +25,12 @@ public class Employee {
    @NotBlank
    @Size(max=12, min=2)
     private String firstName;
+
     @NotBlank
     @Size(max=12, min=2)
     private String lastName;
-    //Thymeleaf returns yyyy-MM-dd but LocalDate accepts mm-dd-yyyy
 
+    //Thymeleaf returns yyyy-MM-dd but LocalDate accepts mm-dd-yyyy
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
@@ -40,6 +42,7 @@ public class Employee {
     @NotBlank
     @Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,}")
     private String password;
+
     private String address;
     private String address2;
     private String city;

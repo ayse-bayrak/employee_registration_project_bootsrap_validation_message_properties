@@ -32,26 +32,25 @@ private final EmployeeService employeeService;
     @PostMapping("/insert")
     public String insertEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult bindingResult, Model model ){
         //@ModelAttribute is going to capture the objects that is sent from the UI
-//Controller should know about the validation, we need tou put @Valid annotation inside the PostMapping method in front of the Employee object
+        //Controller should know about the validation, we need to put @Valid annotation inside the PostMapping method in front of the Employee object
         //Because we are checking the Objects the user is sending us, we need to another interface BindingResult.
         //we need to add this bindingresult as a parameter in our method in wright after Object parameter (Employee)
-        //normally order it does not matter in Java, but here it matter, we have to put after Object to check if it is valid or not
+        //normally order it does not matter in Java, but here it matters, we have to put after Object to check if it is valid or not
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("stateList", DataGenerator.getAllStates());
             return "employee/employee-create";
         }
-
-        employeeService.saveEmployee(employee);
-        model.addAttribute("employeeList", employeeService.readAllEmployees());
-        return "redirect:/employee/list";
+        employeeService.saveEmployee(employee); //save employee to List<Employee> employeeList
+        return "redirect:/employee/list"; //with redirect, we are using endpoints
         //redirect use with endpoint not html file
-        //with redirect we are using endpoints
+
     }
     //we create 2 methods, separate method, insertEmployee() and listEmployees() for single responsibility
     @GetMapping("/list")
     public String listEmployees(Model model) {
         model.addAttribute("employeeList", employeeService.readAllEmployees());
-        return "employee/employee-list"; // without redirect we are using html file
+        //we should add employeeList as attribute to send UI and print in the UI (another html file (employee-list))
+        return "employee/employee-list"; // without redirect, we are using html file
     }
 }
